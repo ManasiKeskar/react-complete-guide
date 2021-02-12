@@ -37,6 +37,7 @@ class Persons extends PureComponent {
 
     render() {
         console.log('[Persons.js] rendering...');
+        console.log("Persons = ", this.props.persons);
         return this.props.persons.map((person, index) => {
             return (
                 <Person
