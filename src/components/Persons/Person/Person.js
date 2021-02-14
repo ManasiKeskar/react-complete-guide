@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Aux from '../../../hoc/Auxiliary';
 import classes from './Person.module.css';
 import withClass from '../../../hoc/withClass';
+import AuthContext from '../../../context/auth-context';
 
 class Person extends Component {
     //Ref types for newer react versions since 16.3
@@ -20,7 +21,10 @@ class Person extends Component {
         console.log('[Person.js] rendering...')
         return (
             <Aux>
-                {this.props.isAuth ? <p>Authenticated</p> : <p>Please Login</p>}
+                <AuthContext.Consumer>
+                   {(context) => 
+                        context.authenticated? <p>Authenticated</p> : <p>Please login</p>} 
+                </AuthContext.Consumer>
                 <p key='i1' onClick={this.props.click}>
                     I'm {this.props.name} and I am {this.props.age} years old.
                 </p>
